@@ -1,0 +1,14 @@
+# Ignorar dependencias de los subproyectos
+**/node_modules/
+**/dist/
+**/tmp/
+
+# Ignorar archivos de sistema y entorno
+.env
+.env.local
+.DS_Store
+Thumbs.db
+
+# Ignorar carpetas de IDEs
+.vscode/
+.idea/
