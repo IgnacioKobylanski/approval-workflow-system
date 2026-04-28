@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Request } from './request.entity';
@@ -18,4 +18,25 @@ export class RequestsService {
     const newRequest = this.requestsRepository.create(data);
     return this.requestsRepository.save(newRequest);
   }
+
+  async updateStatus(id: number, status: string) {
+  const request = await this.requestsRepository.findOneBy({ id });
+  if (!request) {
+    throw new Error('La solicitud no existe');
+  }
+  await this.requestsRepository.update(id, { status });
+  return this.requestsRepository.findOneBy({ id });
+  }
+
+  async findOne(id: number) {
+  const request = await this.requestsRepository.findOneBy({ id });
+  if (!request) throw new NotFoundException(`La solicitud #${id} no existe`);
+  return request;
+}
+
+async remove(id: number) {
+  const request = await this.findOne(id); // Reusamos el de arriba para validar que existe
+  await this.requestsRepository.remove(request);
+  return { deleted: true };
+}
 }
