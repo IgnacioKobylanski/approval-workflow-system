@@ -35,7 +35,7 @@ export class RequestsService {
 }
 
 async remove(id: number) {
-  const request = await this.findOne(id); // Reusamos el de arriba para validar que existe
+  const request = await this.findOne(id);
   await this.requestsRepository.remove(request);
   return { deleted: true };
 }
