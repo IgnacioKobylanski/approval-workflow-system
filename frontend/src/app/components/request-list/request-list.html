@@ -1,0 +1,29 @@
+<div class="list-container">
+  <div class="card-custom">
+    <header>
+      <h3>Solicitudes Recientes</h3>
+      <span class="text-muted">Total: {{ requests().length }}</span>
+    </header>
+
+    <div class="requests-wrapper">
+      @for (req of requests(); track req.id) {
+        <div class="request-item">
+          <div class="info">
+            <span class="title">{{ req.title }}</span>
+            <span class="date">{{ req.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+          </div>
+          
+          <div class="status">
+            <span class="badge" [ngClass]="req.status | lowercase">
+              {{ req.status }}
+            </span>
+          </div>
+        </div>
+      } @empty {
+        <div class="text-center p-4">
+          <p class="text-muted">No hay solicitudes pendientes.</p>
+        </div>
+      }
+    </div>
+  </div>
+</div>
