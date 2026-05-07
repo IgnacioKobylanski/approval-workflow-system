@@ -62,15 +62,15 @@
   letter-spacing: 0.025em;
 
   &.pending { 
-    background-color: #fef3c7; 
+    background-color: var(--background); 
     color: #d97706; 
   }
   &.approved { 
-    background-color: #d1fae5; 
+    background-color: var(--background); 
     color: #059669; 
   }
   &.rejected { 
-    background-color: #fee2e2; 
+    background-color: var(--background); 
     color: #dc2626; 
   }
 }
