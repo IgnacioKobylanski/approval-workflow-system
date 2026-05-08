@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Request } from './request.entity';
+import { Request } from './entities/request.entity';
 import { RequestsService } from './requests.service';
 import { RequestsController } from './requests.controller';
 

@@ -1,5 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from 'typeorm';
 import { ApiProperty } from '@nestjs/swagger';
+import { User } from 'src/users/entities/user.entity';
+
+
 @Entity('requests')
 export class Request {
   @ApiProperty()
@@ -20,4 +23,7 @@ export class Request {
 
   @CreateDateColumn()
   createdAt!: Date;
+
+  @ManyToOne(() => User, (user) => user.requests)
+  user!: User;
 }

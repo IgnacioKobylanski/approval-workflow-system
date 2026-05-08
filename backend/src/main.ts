@@ -19,6 +19,7 @@ async function bootstrap() {
     .setTitle('Approval Workflow API')
     .setDescription('Sistema de gestión de aprobaciones')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
     
   const document = SwaggerModule.createDocument(app, config);
