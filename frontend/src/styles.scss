@@ -1,29 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-$primary: #2563eb;  
-$secondary: #64748b;  
-$success: #10b981;   
-$danger: #ef4444; 
-$warning: #f59e0b;
-$background: #f8fafc;
-$surface: #ffffff;
-$text-main: #1e293b;
-$text-muted: #64748b;
-
-$font-family: 'Inter', sans-serif;
-$border-radius: 8px;
-$transition: all 0.3s ease;
+:root {
+  --primary: #2563eb;
+  --secondary: #64748b;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --disabled-bg: #cbd5e1;
+  --disabled-text: #94a3b8;
+  --font-family: 'Inter', sans-serif;
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
 
 body {
-  background-color: $background;
-  color: $text-main;
-  font-family: $font-family;
+  background-color: var(--background);
+  color: var(--text-main);
+  font-family: var(--font-family);
   margin: 0;
 }
 
 .card-custom {
-  background: $surface;
-  border-radius: $border-radius;
+  background: var(--surface);
+  border-radius: var(--border-radius);
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   padding: 1.5rem;
 }

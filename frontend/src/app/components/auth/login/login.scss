@@ -1,0 +1,82 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--background);
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  h2 {
+    color: var(--primary);
+    margin: 0;
+    font-weight: 700;
+    text-align: center;
+    font-family: var(--font-family);
+  }
+
+  p {
+    color: var(--text-muted);
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: -0.5rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    input {
+      background-color: var(--surface);
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: var(--border-radius);
+      font-family: var(--font-family);
+      transition: var(--transition);
+      color: var(--text-main);
+
+      &:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      }
+    }
+  }
+
+  button {
+    background-color: var(--primary);
+    color: var(--surface);
+    padding: 0.85rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    font-family: var(--font-family);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 0.5rem;
+
+    &:hover:not(:disabled) {
+      filter: brightness(90%);
+    }
+
+    &:disabled {
+      background-color: var(--disabled-bg);
+      color: var(--disabled-text);
+      cursor: not-allowed;
+      opacity: 1;
+    }
+  }
+}
