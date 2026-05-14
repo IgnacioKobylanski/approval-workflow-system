@@ -17,12 +17,16 @@ export class AuthService {
         if (response.access_token) {
           localStorage.setItem('access_token', response.access_token);
         }
+        if (response.user.firstName) {
+          localStorage.setItem('user_name', response.user.firstName);
+        }
       })
     );
   }
 
   logout(): void {
     localStorage.removeItem('access_token');
+    localStorage.removeItem('user_name');
   }
 
   isLoggedIn(): boolean {

@@ -1,0 +1,8 @@
+<nav class="header-nav" *ngIf="authService.isLoggedIn()">
+  <div class="brand">ApproveIT</div>
+  
+  <div class="user-controls">
+    <span class="username">👤 {{ userFullName }}</span>
+    <button (click)="onLogout()" class="logout-btn">Cerrar Sesión</button>
+  </div>
+</nav>

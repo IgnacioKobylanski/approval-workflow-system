@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { RequestListComponent } from './components/request-list/request-list';
 import { LoginComponent } from './components/auth/login/login';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -10,6 +11,7 @@ export const routes: Routes = [
   {
     path: 'requests',
     component: RequestListComponent,
+    canActivate: [authGuard]
   },
   {
     path: '',
