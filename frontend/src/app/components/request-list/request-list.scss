@@ -28,7 +28,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--border-color);
   transition: var(--transition);
 
   &:last-child {
@@ -36,19 +36,43 @@
   }
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.02);
+    background-color: var(--background);
   }
 
   .info {
+    flex: 1;
+    padding-right: 1.5rem;
+
+    .employee-name {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.2rem;
+    }
+
     .title {
       display: block;
       font-weight: 600;
       color: var(--text-main);
       font-size: 1.05rem;
     }
+
     .date {
+      display: block;
       font-size: 0.85rem;
       color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .description {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      opacity: 0.85;
+      line-height: 1.4;
     }
   }
 }
@@ -63,14 +87,14 @@
 
   &.pending { 
     background-color: var(--background); 
-    color: #d97706; 
+    color: var(--warning); 
   }
   &.approved { 
     background-color: var(--background); 
-    color: #059669; 
+    color: var(--success); 
   }
   &.rejected { 
     background-color: var(--background); 
-    color: #dc2626; 
+    color: var(--danger); 
   }
 }

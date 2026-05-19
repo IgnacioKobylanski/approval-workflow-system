@@ -9,8 +9,17 @@
       @for (req of requests(); track req.id) {
         <div class="request-item">
           <div class="info">
+            
+            @if (req.user) {
+              <span class="employee-name">
+                {{ req.user.firstName }} {{ req.user.lastName }}
+              </span>
+            }
+
             <span class="title">{{ req.title }}</span>
             <span class="date">{{ req.createdAt | date:'dd/MM/yyyy HH:mm' }}</span>
+            
+            <p class="description">{{ req.description }}</p>
           </div>
           
           <div class="status">

@@ -4,6 +4,12 @@ export interface Request {
   description: string;
   status: string;
   createdAt: Date;
+  user?: {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
 }
 
 export interface CreateRequestDto {

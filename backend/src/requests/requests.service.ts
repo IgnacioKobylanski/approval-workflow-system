@@ -11,8 +11,10 @@ export class RequestsService {
   ) {}
 
   findAll(): Promise<Request[]> {
-    return this.requestsRepository.find();
-  }
+  return this.requestsRepository.find({
+    relations: ['user']
+  });
+}
 
   create(data: Partial<Request>): Promise<Request> {
     const newRequest = this.requestsRepository.create(data);

@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Patch, Param, ParseIntPipe, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, ParseIntPipe, Delete, Req, UseGuards } from '@nestjs/common';
 import { RequestsService } from './requests.service';
 import { CreateRequestDto } from './dto/create-request.dto'
 import { UpdateRequestStatusDto } from './dto/update-request-status.dto';
-import { ApiOkResponse, ApiTags, ApiOperation, ApiParam, ApiCreatedResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags, ApiOperation, ApiParam, ApiCreatedResponse, ApiBearerAuth } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { User } from 'src/users/entities/user.entity';
 
 @ApiTags('requests')
 @Controller('requests')
@@ -27,11 +29,20 @@ export class RequestsController {
     return this.requestsService.findOne(id);
   }
 
-  @Post()
+ @Post()
+  @UseGuards(AuthGuard('jwt'))
+  @ApiBearerAuth()
   @ApiOperation({ summary: 'Crear una nueva solicitud' })
   @ApiCreatedResponse({ description: 'La solicitud ha sido creada correctamente.', type: CreateRequestDto })
-  create(@Body() createRequestDto: CreateRequestDto) {
-    return this.requestsService.create(createRequestDto);
+  create(@Body() createRequestDto: CreateRequestDto, @Req() req: any) {
+    const userId = req.user.id || req.user.sub;
+
+    const requestData = {
+      ...createRequestDto,
+      user: { id: userId } as User
+    };
+
+    return this.requestsService.create(requestData);
   }
 
   @Patch(':id/status')
