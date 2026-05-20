@@ -58,7 +58,7 @@ export class RequestsController {
 
   @Delete(':id')
   @ApiOperation({ summary: 'Eliminar una solicitud' })
-  @ApiParam({ name: 'id', description: 'ID de la solicitud a borrar' })
+  @ApiParam({ name: 'id', description: 'ID de la solicitud a eliminar' })
   @ApiOkResponse({ description: 'Solicitud eliminada con éxito.' })
   remove(@Param('id', ParseIntPipe) id: number) {
     return this.requestsService.remove(id);
